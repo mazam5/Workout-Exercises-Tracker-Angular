@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/assets/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/assets/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/assets/fonts/Poppins-Medium.ttf") format("truetype");
+  font-weight: medium;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/assets/fonts/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: semibold;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/assets/fonts/Poppins-Italic.ttf") format("truetype");
+  font-style: italic;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Poppins", Roboto, "Helvetica Neue", sans-serif;
+}
