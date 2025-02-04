@@ -66,8 +66,25 @@ export class AddNewWorkoutComponent {
     const workoutsData = this.addWorkoutForm.value;
     const usersData = JSON.parse(localStorage.getItem('usersData')!) || [];
     const workoutData = {
-      id: usersData.length + 1,
-      ...workoutsData,
+      data: {
+        id: usersData.length + 1,
+        totalWorkouts: workoutsData?.workouts?.length!,
+        totalWorkoutDuration: workoutsData?.workouts?.reduce(
+          (acc, w) => acc + parseInt(w.workoutDuration!, 10) || 0,
+          0,
+        ),
+        name: workoutsData.name,
+        workouts: workoutsData.workouts?.map((w) => w.workoutName).join(', '),
+      },
+      children: workoutsData?.workouts?.map((workout) => ({
+        data: {
+          id: '',
+          name: '',
+          workouts: workout.workoutName,
+          totalWorkouts: '',
+          totalWorkoutDuration: `${workout.workoutDuration} mins`,
+        },
+      })),
     };
     usersData.push(workoutData);
     localStorage.setItem('usersData', JSON.stringify(usersData));

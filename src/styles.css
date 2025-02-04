@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "primeicons/primeicons.css";
 @font-face {
   font-family: "Poppins";
   src: url("/src/assets/fonts/Poppins-Regular.ttf") format("truetype");

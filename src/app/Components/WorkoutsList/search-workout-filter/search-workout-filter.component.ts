@@ -44,8 +44,6 @@ export class SearchAndFilterComponent implements OnInit {
         search: value.search || '',
         workoutType: value.workoutType || '',
       });
-      console.log(value.search);
-      console.log(value.workoutType);
     });
   }
 }

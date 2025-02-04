@@ -1,59 +1,49 @@
-# HealthTrackerAngular
+# Health Fitness Tracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
+## Description
 
-## Development server
+This is a simple health fitness tracker that allows users to track their daily workouts. The user can add new workouts. The user can also view their progress in a graph format.
 
-To start a local development server, run:
+## Table of Contents
 
-```bash
-ng serve
-```
+- [Installation](#installation)
+- [Technologies](#technologies)
+- [Explanation](#explanation)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Installation
 
-## Code scaffolding
+To install the necessary dependencies, run the following command:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1. Clone the repository
 
 ```bash
-ng generate --help
+git clone https://github.com/mazam5/Workout-Exercises-Tracker-Angular
 ```
 
-## Building
-
-To build the project run:
+2. Install the dependencies
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+3. Run the application
 
 ```bash
-ng test
+ng serve --open
 ```
 
-## Running end-to-end tests
+## Technologies
 
-For end-to-end (e2e) testing, run:
+- Angular
+- Angular Material
+- Chart.js
+- Angular Chart.js
+- PrimeNG
+
+## Explanation
+
+This application is a simple health fitness tracker that allows users to track their daily workouts. The user can add new workouts. The user can also view their progress in a graph format.
 
 ```bash
-ng e2e
+ng serve --open
 ```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
