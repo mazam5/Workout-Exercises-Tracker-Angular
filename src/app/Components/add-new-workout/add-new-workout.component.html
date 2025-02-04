@@ -1,1 +1,64 @@
-<p>add-new-workout works!</p>
+<div class="my-5 flex items-center justify-around">
+  <form [formGroup]="addWorkoutForm">
+    <p-inputgroup class="mb-4">
+      <p-inputgroup-addon>
+        <span class="material-symbols-outlined"> id_card </span>
+      </p-inputgroup-addon>
+      <input pInputText formControlName="name" placeholder="Name" />
+    </p-inputgroup>
+    <div formArrayName="workouts">
+      <div
+        class="card my-4 flex justify-between gap-4"
+        *ngFor="let workout of workouts.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <p-inputgroup>
+          <p-inputgroup-addon>
+            <span class="material-symbols-outlined">
+              exercise
+            </span> </p-inputgroup-addon
+          ><p-select
+            [options]="workoutTypes"
+            formControlName="workoutName"
+            placeholder="Workout Type"
+          >
+          </p-select>
+        </p-inputgroup>
+        <p-inputgroup>
+          <p-inputgroup-addon>
+            <span class="material-symbols-outlined"> schedule </span>
+          </p-inputgroup-addon>
+          <p-inputnumber
+            formControlName="workoutDuration"
+            placeholder="Minutes"
+          />
+        </p-inputgroup>
+
+        <p-button
+          *ngIf="i === workouts.controls.length - 1"
+          severity="secondary"
+          class="ml-2"
+          (click)="addWorkoutRow()"
+        >
+          <span class="material-symbols-outlined"> add_circle </span>
+        </p-button>
+        <p-button
+          *ngIf="i !== workouts.controls.length - 1"
+          severity="secondary"
+          class="ml-2"
+          (click)="removeWorkoutRow(i)"
+        >
+          <span class="material-symbols-outlined"> remove_circle </span>
+        </p-button>
+      </div>
+    </div>
+
+    <div class="my-6">
+      <p-button
+        label="Save to Workouts"
+        class="w-full"
+        (click)="saveWorkout()"
+      ></p-button>
+    </div>
+  </form>
+</div>

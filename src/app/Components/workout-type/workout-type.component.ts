@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { SelectModule } from 'primeng/select';
-import { workoutTypes } from './../../../data';
+import { ALLWORKOUTTYPES } from '../../../data';
 @Component({
   selector: 'app-workout-type',
   imports: [
@@ -16,6 +16,6 @@ import { workoutTypes } from './../../../data';
   templateUrl: './workout-type.component.html',
 })
 export class WorkoutTypeComponent {
-  workoutTypes = workoutTypes;
+  workoutTypes = ALLWORKOUTTYPES;
   @Input() filtersForm!: FormGroup;
 }

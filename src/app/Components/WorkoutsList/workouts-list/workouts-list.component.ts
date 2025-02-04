@@ -1,9 +1,9 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TreeNode } from 'primeng/api';
-import { TreeTableModule } from 'primeng/treetable';
 import { DividerModule } from 'primeng/divider';
+import { TreeTableModule } from 'primeng/treetable';
 import { USERS } from '../../../../data';
 import { SearchAndFilterComponent } from '../search-and-filter/search-and-filter.component';
 
@@ -31,42 +31,57 @@ export class WorkoutsListComponent implements OnInit {
     { field: 'name', header: 'Name' },
     { field: 'workouts', header: 'Workouts' },
     { field: 'totalWorkouts', header: 'Number of Workouts' },
-    { field: 'totalMinutes', header: 'Total Workout Minutes' },
+    { field: 'totalWorkoutDuration', header: 'Total Workout Minutes' },
   ];
 
   users: TreeNode[] = [];
   filteredUsers: TreeNode[] = []; // To hold filtered data
 
   ngOnInit() {
-    this.loadUsers();
+    this.initializeUsers();
   }
-  // Load initial data
-  loadUsers() {
-    this.users = USERS.map((user) => {
-      const totalWorkouts = user.workouts.length;
-      const totalMinutes = user.workouts.reduce((acc, w) => acc + w.minutes, 0);
 
-      const children = user.workouts.map((workout) => ({
-        data: {
-          id: '',
-          name: '',
-          workouts: workout.type,
-          totalWorkouts: '',
-          totalMinutes: `${workout.minutes} mins`,
-        },
-      }));
+  // Initialize Users - Check localStorage first
+  initializeUsers() {
+    const storedUsers = localStorage.getItem('usersData');
 
-      return {
-        data: {
-          id: user.id,
-          name: user.name,
-          workouts: user.workouts.map((w) => w.type).join(', '),
-          totalWorkouts,
-          totalMinutes,
-        },
-        children,
-      };
-    });
+    if (storedUsers) {
+      // Load from localStorage if available
+      this.users = JSON.parse(storedUsers);
+    } else {
+      // Save initial USERS data to localStorage
+      this.users = USERS.map((user) => {
+        const totalWorkouts = user.workouts.length;
+        const totalWorkoutDuration = user.workouts.reduce(
+          (acc, w) => acc + w.workoutDuration,
+          0,
+        );
+
+        const children = user.workouts.map((workout) => ({
+          data: {
+            id: '',
+            name: '',
+            workouts: workout.workoutName,
+            totalWorkouts: '',
+            totalWorkoutDuration: `${workout.workoutDuration} mins`,
+          },
+        }));
+
+        return {
+          data: {
+            id: user.id,
+            name: user.name,
+            workouts: user.workouts.map((w) => w.workoutName).join(', '),
+            totalWorkouts,
+            totalWorkoutDuration,
+          },
+          children,
+        };
+      });
+
+      // Save to localStorage
+      localStorage.setItem('usersData', JSON.stringify(this.users));
+    }
 
     this.filteredUsers = [...this.users]; // Set initial filtered data
   }

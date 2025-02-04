@@ -4,12 +4,12 @@ export const USERS = [
     name: 'Johnny Depp',
     workouts: [
       {
-        type: 'Kayaking',
-        minutes: 15,
+        workoutName: 'Kayaking',
+        workoutDuration: 15,
       },
       {
-        type: 'Running',
-        minutes: 45,
+        workoutName: 'Running',
+        workoutDuration: 45,
       },
     ],
   },
@@ -18,16 +18,16 @@ export const USERS = [
     name: 'Tom Cruise',
     workouts: [
       {
-        type: 'Swimming',
-        minutes: 30,
+        workoutName: 'Swimming',
+        workoutDuration: 30,
       },
       {
-        type: 'Walking',
-        minutes: 15,
+        workoutName: 'Walking',
+        workoutDuration: 15,
       },
       {
-        type: 'Cycling',
-        minutes: 30,
+        workoutName: 'Cycling',
+        workoutDuration: 30,
       },
     ],
   },
@@ -36,13 +36,13 @@ export const USERS = [
     name: 'Will Smith',
     workouts: [
       {
-        type: 'Hiking',
-        minutes: 45,
+        workoutName: 'Hiking',
+        workoutDuration: 45,
       },
     ],
   },
 ];
-export const workoutTypes: string[] = [
+export const ALLWORKOUTTYPES: string[] = [
   'Swimming',
   'Cycling',
   'Walking',
