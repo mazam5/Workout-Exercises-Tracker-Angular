@@ -1,3 +1,4 @@
+import { NgFor, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
   FormArray,
@@ -5,6 +6,7 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
@@ -12,8 +14,6 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { ALLWORKOUTTYPES } from '../../../data';
-import { NgFor, NgIf } from '@angular/common';
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-new-workout',
   imports: [
@@ -28,7 +28,6 @@ import { Router } from '@angular/router';
     NgIf,
   ],
   templateUrl: './add-new-workout.component.html',
-  styleUrl: './add-new-workout.component.css',
 })
 export class AddNewWorkoutComponent {
   router = inject(Router);

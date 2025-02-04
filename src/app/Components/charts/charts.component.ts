@@ -4,8 +4,5 @@ import { Component } from '@angular/core';
   selector: 'app-charts',
   imports: [],
   templateUrl: './charts.component.html',
-  styleUrl: './charts.component.css'
 })
-export class ChartsComponent {
-
-}
+export class ChartsComponent {}
