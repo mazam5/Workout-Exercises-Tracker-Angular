@@ -4,8 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TreeNode } from 'primeng/api';
 import { DividerModule } from 'primeng/divider';
 import { TreeTableModule } from 'primeng/treetable';
-import { USERS } from '../../../../data';
 import { SearchAndFilterComponent } from '../search-workout-filter/search-workout-filter.component';
+import { DataService } from '../../../data.service';
 
 interface Columns {
   field: string;
@@ -14,6 +14,7 @@ interface Columns {
 
 @Component({
   selector: 'app-workouts-list',
+  standalone: true,
   imports: [
     CommonModule,
     TreeTableModule,
@@ -35,56 +36,20 @@ export class WorkoutsListComponent implements OnInit {
   ];
 
   users: TreeNode[] = [];
-  filteredUsers: TreeNode[] = []; // To hold filtered data
+  filteredUsers: TreeNode[] = [];
+
+  constructor(private dataService: DataService) {} // Inject UserService
 
   ngOnInit() {
-    this.initializeUsers();
+    this.loadUsers();
   }
 
-  // Initialize Users - Check localStorage first
-  initializeUsers() {
-    const storedUsers = localStorage.getItem('usersData');
-
-    if (storedUsers) {
-      // Load from localStorage if available
-      this.users = JSON.parse(storedUsers);
-    } else {
-      // Save initial USERS data to localStorage
-      this.users = USERS.map((user) => {
-        const totalWorkouts = user.workouts.length;
-        const totalWorkoutDuration = user.workouts.reduce(
-          (acc, w) => acc + w.workoutDuration,
-          0,
-        );
-
-        const children = user.workouts.map((workout) => ({
-          data: {
-            id: '',
-            name: '',
-            workouts: workout.workoutName,
-            totalWorkouts: '',
-            totalWorkoutDuration: `${workout.workoutDuration} mins`,
-          },
-        }));
-
-        return {
-          data: {
-            id: user.id,
-            name: user.name,
-            workouts: user.workouts.map((w) => w.workoutName).join(', '),
-            totalWorkouts,
-            totalWorkoutDuration,
-          },
-          children,
-        };
-      });
-
-      // Save to localStorage
-      localStorage.setItem('usersData', JSON.stringify(this.users));
-    }
-
-    this.filteredUsers = [...this.users]; // Set initial filtered data
+  // Load users via the service
+  loadUsers() {
+    this.users = this.dataService.getUsers();
+    this.filteredUsers = [...this.users];
   }
+
   // Filter Handler
   onFilterChange(filters: { search: string; workoutType: string }) {
     const { search, workoutType } = filters;
@@ -94,7 +59,7 @@ export class WorkoutsListComponent implements OnInit {
         .toLowerCase()
         .includes(search.toLowerCase());
       const matchesWorkoutType = workoutType
-        ? user.data.workouts.includes(workoutType)
+        ? user.data.workouts.includes(workoutType) || workoutType === 'All'
         : true;
 
       return matchesName && matchesWorkoutType;

@@ -18,6 +18,7 @@
               exercise
             </span> </p-inputgroup-addon
           ><p-select
+            class="w-full"
             [options]="workoutTypes"
             formControlName="workoutName"
             placeholder="Workout Type"
@@ -30,12 +31,14 @@
           </p-inputgroup-addon>
           <p-inputnumber
             min="1"
+            class="w-full"
             formControlName="workoutDuration"
             placeholder="Minutes"
           />
         </p-inputgroup>
 
         <p-button
+          title="Add Workout Row"
           *ngIf="i === workouts.controls.length - 1"
           severity="secondary"
           class="ml-2"
@@ -44,6 +47,7 @@
           <span class="material-symbols-outlined"> add_circle </span>
         </p-button>
         <p-button
+          title="Remove Workout Row"
           *ngIf="i !== workouts.controls.length - 1"
           severity="secondary"
           class="ml-2"
@@ -56,6 +60,7 @@
 
     <div class="my-6">
       <p-button
+        [disabled]="!addWorkoutForm.valid"
         label="Save to Workouts"
         class="w-full"
         (click)="saveWorkout()"

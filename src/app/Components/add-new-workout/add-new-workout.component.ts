@@ -5,6 +5,7 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
@@ -32,14 +33,21 @@ import { ALLWORKOUTTYPES } from '../../../data';
 export class AddNewWorkoutComponent {
   router = inject(Router);
   workoutTypes = ALLWORKOUTTYPES;
+
   addWorkoutForm = new FormGroup({
-    name: new FormControl(''),
-    workouts: new FormArray([
-      new FormGroup({
-        workoutName: new FormControl(''),
-        workoutDuration: new FormControl(''),
-      }),
-    ]),
+    name: new FormControl('', Validators.required),
+    workouts: new FormArray(
+      [
+        new FormGroup(
+          {
+            workoutName: new FormControl('', Validators.required),
+            workoutDuration: new FormControl('', Validators.required),
+          },
+          Validators.required,
+        ),
+      ],
+      Validators.required,
+    ),
   });
 
   get workouts() {
@@ -67,7 +75,7 @@ export class AddNewWorkoutComponent {
     const workoutData = {
       data: {
         id: usersData.length + 1,
-        totalWorkouts: workoutsData?.workouts?.length!,
+        totalWorkouts: workoutsData?.workouts?.length,
         totalWorkoutDuration: workoutsData?.workouts?.reduce(
           (acc, w) => acc + parseInt(w.workoutDuration!, 10) || 0,
           0,
@@ -88,7 +96,6 @@ export class AddNewWorkoutComponent {
     usersData.push(workoutData);
     localStorage.setItem('usersData', JSON.stringify(usersData));
     localStorage.getItem('usersData');
-    alert('Workouts saved successfully!');
     this.router.navigateByUrl('/');
   }
 }

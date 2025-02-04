@@ -37,7 +37,6 @@ ng serve --open
 - Angular
 - Angular Material
 - Chart.js
-- Angular Chart.js
 - PrimeNG
 
 ## Explanation

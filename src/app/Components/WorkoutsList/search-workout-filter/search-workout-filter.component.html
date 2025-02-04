@@ -1,9 +1,9 @@
 <form
   [formGroup]="filtersForm"
-  class="m-5 flex items-center justify-center gap-5"
+  class="m-5 flex items-center justify-around gap-5"
 >
   <!-- Filter by Search -->
-  <p-inputgroup class="w-xs">
+  <p-inputgroup class="relative max-w-2xs">
     <p-inputgroup-addon>
       <span class="material-symbols-outlined">person_search</span>
     </p-inputgroup-addon>
@@ -13,9 +13,23 @@
       id="search"
       placeholder="Filter by Name"
     />
+
+    <!-- Clear Button (appears only when the search field is not empty) -->
+    <button
+      *ngIf="filtersForm.get('search')?.value !== ''"
+      type="button"
+      (click)="clearSearch()"
+      class="absolute top-1/2 right-2 flex -translate-y-1/2 items-center text-gray-500 hover:text-black"
+    >
+      <span
+        class="material-symbols-outlined hover:cursor-pointer hover:text-white"
+        >cancel</span
+      >
+    </button>
   </p-inputgroup>
+
   <!-- Filter by Workout Type -->
-  <p-inputgroup class="w-xs">
+  <p-inputgroup class="max-w-2xs">
     <p-inputgroup-addon>
       <span class="material-symbols-outlined"> exercise </span>
     </p-inputgroup-addon>
@@ -37,6 +51,3 @@
     </div>
   </p-inputgroup>
 </form>
-
-<!-- <app-search-form [filtersForm]="filtersForm" /> -->
-<!-- <app-workout-type [filtersForm]="filtersForm" /> -->
