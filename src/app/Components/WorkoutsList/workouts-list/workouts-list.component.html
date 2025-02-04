@@ -1,0 +1,41 @@
+<!-- (filtersChanged)="onFilterChange($event)" -->
+<app-search-and-filter></app-search-and-filter>
+<p-divider />
+<div>
+  <div class="card text-white">
+    <p-treetable
+      [value]="users"
+      [columns]="columns"
+      [paginator]="true"
+      [rows]="5"
+      [rowsPerPageOptions]="[5, 10, 15, 20, 25, 50, 100]"
+      [scrollable]="true"
+      [tableStyle]="{ 'min-width': '80rem' }"
+    >
+      <!-- Header -->
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns">{{ col.header }}</th>
+        </tr>
+      </ng-template>
+
+      <!-- Body -->
+      <ng-template
+        pTemplate="body"
+        let-rowNode
+        let-rowData="rowData"
+        let-columns="columns"
+      >
+        <tr [ttRow]="rowNode">
+          <td *ngFor="let col of columns; let i = index">
+            <p-treeTableToggler
+              [rowNode]="rowNode"
+              *ngIf="i === 0"
+            ></p-treeTableToggler>
+            {{ rowData[col.field] || " " }}
+          </td>
+        </tr>
+      </ng-template>
+    </p-treetable>
+  </div>
+</div>

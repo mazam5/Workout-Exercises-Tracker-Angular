@@ -3,22 +3,53 @@ export const USERS = [
     id: 1,
     name: 'Johnny Depp',
     workouts: [
-      { type: 'Walking', duration: 60 },
-      { type: 'Running', duration: 30 },
+      {
+        type: 'Kayaking',
+        minutes: 15,
+      },
+      {
+        type: 'Running',
+        minutes: 45,
+      },
     ],
   },
   {
     id: 2,
     name: 'Tom Cruise',
-    workouts: [{ type: 'Walking', duration: 30 }],
+    workouts: [
+      {
+        type: 'Swimming',
+        minutes: 30,
+      },
+      {
+        type: 'Running',
+        minutes: 15,
+      },
+      {
+        type: 'Cycling',
+        minutes: 30,
+      },
+    ],
   },
   {
     id: 3,
     name: 'Will Smith',
     workouts: [
-      { type: 'Walking', duration: 45 },
-      { type: 'Running', duration: 45 },
-      { type: 'Cycling', duration: 60 },
+      {
+        type: 'Hiking',
+        minutes: 45,
+      },
     ],
   },
+];
+export const workoutTypes: string[] = [
+  'Swimming',
+  'Cycling',
+  'Walking',
+  'Running',
+  'Rowing',
+  'Hiking',
+  'Jump Rope',
+  'Stair Climbing',
+  'Kayaking',
 ];

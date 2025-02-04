@@ -1,0 +1,25 @@
+<!-- [formGroup]="filtersForm" -->
+<div class="card flex w-full items-center justify-center md:w-xs">
+  <!-- [(ngModel)]="selectedCountry" -->
+  <!-- optionLabel="name" -->
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <span class="material-symbols-outlined"> exercise </span>
+    </p-inputgroup-addon>
+    <div class="flex w-full items-center">
+      <p-select
+        [options]="workoutTypes"
+        [formControl]="workoutTypeControl"
+        [showClear]="true"
+        placeholder="Filter by Workout Type"
+      >
+        <ng-template #selectedItem let-workoutTypeControl>
+          <p>{{ workoutTypeControl }}</p>
+        </ng-template>
+        <ng-template let-workout #item>
+          <p>{{ workout }}</p>
+        </ng-template>
+      </p-select>
+    </div>
+  </p-inputgroup>
+</div>
