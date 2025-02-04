@@ -1,8 +1,21 @@
 <form
   [formGroup]="filtersForm"
-  class="card flex w-full items-center justify-center md:w-xs"
+  class="m-5 flex items-center justify-center gap-5"
 >
-  <p-inputgroup>
+  <!-- Filter by Search -->
+  <p-inputgroup class="w-xs">
+    <p-inputgroup-addon>
+      <span class="material-symbols-outlined">person_search</span>
+    </p-inputgroup-addon>
+    <input
+      pInputText
+      formControlName="search"
+      id="search"
+      placeholder="Filter by Name"
+    />
+  </p-inputgroup>
+  <!-- Filter by Workout Type -->
+  <p-inputgroup class="w-xs">
     <p-inputgroup-addon>
       <span class="material-symbols-outlined"> exercise </span>
     </p-inputgroup-addon>
@@ -23,3 +36,6 @@
     </div>
   </p-inputgroup>
 </form>
+
+<!-- <app-search-form [filtersForm]="filtersForm" /> -->
+<!-- <app-workout-type [filtersForm]="filtersForm" /> -->

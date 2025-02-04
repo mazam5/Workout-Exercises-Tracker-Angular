@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchAndFilterComponent } from './search-and-filter.component';
+import { SearchAndFilterComponent } from './search-workout-filter.component';
 
 describe('SearchAndFilterComponent', () => {
   let component: SearchAndFilterComponent;
@@ -8,9 +8,8 @@ describe('SearchAndFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SearchAndFilterComponent]
-    })
-    .compileComponents();
+      imports: [SearchAndFilterComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SearchAndFilterComponent);
     component = fixture.componentInstance;

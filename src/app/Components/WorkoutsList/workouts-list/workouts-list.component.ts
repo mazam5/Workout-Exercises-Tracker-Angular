@@ -5,7 +5,7 @@ import { TreeNode } from 'primeng/api';
 import { DividerModule } from 'primeng/divider';
 import { TreeTableModule } from 'primeng/treetable';
 import { USERS } from '../../../../data';
-import { SearchAndFilterComponent } from '../search-and-filter/search-and-filter.component';
+import { SearchAndFilterComponent } from '../search-workout-filter/search-workout-filter.component';
 
 interface Columns {
   field: string;
