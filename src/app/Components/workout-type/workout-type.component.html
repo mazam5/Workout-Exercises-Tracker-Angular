@@ -1,7 +1,7 @@
-<!-- [formGroup]="filtersForm" -->
-<div class="card flex w-full items-center justify-center md:w-xs">
-  <!-- [(ngModel)]="selectedCountry" -->
-  <!-- optionLabel="name" -->
+<form
+  [formGroup]="filtersForm"
+  class="card flex w-full items-center justify-center md:w-xs"
+>
   <p-inputgroup>
     <p-inputgroup-addon>
       <span class="material-symbols-outlined"> exercise </span>
@@ -9,7 +9,7 @@
     <div class="flex w-full items-center">
       <p-select
         [options]="workoutTypes"
-        [formControl]="workoutTypeControl"
+        formControlName="workoutType"
         [showClear]="true"
         placeholder="Filter by Workout Type"
       >
@@ -22,4 +22,4 @@
       </p-select>
     </div>
   </p-inputgroup>
-</div>
+</form>

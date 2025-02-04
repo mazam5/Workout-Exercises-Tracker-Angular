@@ -1,9 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, EventEmitter, Input } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { workoutTypes } from './../../../data';
 @Component({
@@ -17,17 +15,7 @@ import { workoutTypes } from './../../../data';
   standalone: true,
   templateUrl: './workout-type.component.html',
 })
-//
-export class WorkoutTypeComponent implements OnInit {
+export class WorkoutTypeComponent {
   workoutTypes = workoutTypes;
-  workoutTypeControl = new FormControl('');
-
-  @Output() workoutTypeChanged = new EventEmitter<string>();
-
-  ngOnInit(): void {
-    this.workoutTypeControl.valueChanges.subscribe((value) => {
-      this.workoutTypeChanged.emit(value!);
-      console.log('workoutTypeChanged', value);
-    });
-  }
+  @Input() filtersForm!: FormGroup;
 }

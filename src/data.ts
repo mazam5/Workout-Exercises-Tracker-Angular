@@ -22,7 +22,7 @@ export const USERS = [
         minutes: 30,
       },
       {
-        type: 'Running',
+        type: 'Walking',
         minutes: 15,
       },
       {

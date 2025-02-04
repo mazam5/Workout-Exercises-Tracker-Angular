@@ -1,11 +1,15 @@
-<form class="card flex justify-center">
+<form
+  [formGroup]="filtersForm"
+  class="card flex justify-center"
+  [formGroup]="filtersForm"
+>
   <p-inputgroup>
     <p-inputgroup-addon>
-      <span class="material-symbols-outlined"> person_search </span>
+      <span class="material-symbols-outlined">person_search</span>
     </p-inputgroup-addon>
     <input
       pInputText
-      [formControl]="searchControl"
+      formControlName="search"
       id="search"
       type="text"
       placeholder="Filter by Name"

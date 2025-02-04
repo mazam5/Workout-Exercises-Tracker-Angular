@@ -1,10 +1,11 @@
-<!-- (filtersChanged)="onFilterChange($event)" -->
-<app-search-and-filter></app-search-and-filter>
+<app-search-and-filter
+  (filtersChanged)="onFilterChange($event)"
+></app-search-and-filter>
 <p-divider />
 <div>
   <div class="card text-white">
     <p-treetable
-      [value]="users"
+      [value]="filteredUsers"
       [columns]="columns"
       [paginator]="true"
       [rows]="5"

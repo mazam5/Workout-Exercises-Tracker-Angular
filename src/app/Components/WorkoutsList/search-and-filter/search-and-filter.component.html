@@ -1,4 +1,4 @@
 <div class="my-5 flex items-center justify-around">
-  <app-search-form searchControl="searchChange($event)" />
-  <app-workout-type workoutTypeControl="workoutChange($event)" />
+  <app-search-form [filtersForm]="filtersForm" />
+  <app-workout-type [filtersForm]="filtersForm" />
 </div>

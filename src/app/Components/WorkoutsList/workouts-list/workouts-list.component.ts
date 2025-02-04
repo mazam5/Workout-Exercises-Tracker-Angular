@@ -1,5 +1,5 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TreeNode } from 'primeng/api';
 import { TreeTableModule } from 'primeng/treetable';
@@ -70,19 +70,19 @@ export class WorkoutsListComponent implements OnInit {
 
     this.filteredUsers = [...this.users]; // Set initial filtered data
   }
-  // // Filter Handler
-  // onFilterChange(filters: { searchFilter: string; workoutType: string }) {
-  //   const { searchFilter, workoutType } = filters;
+  // Filter Handler
+  onFilterChange(filters: { search: string; workoutType: string }) {
+    const { search, workoutType } = filters;
 
-  //   this.filteredUsers = this.users.filter((user) => {
-  //     const matchesName = user.data.name
-  //       .toLowerCase()
-  //       .includes(searchFilter.toLowerCase());
-  //     const matchesWorkoutType = workoutType
-  //       ? user.data.workouts.includes(workoutType)
-  //       : true;
+    this.filteredUsers = this.users.filter((user) => {
+      const matchesName = user.data.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+      const matchesWorkoutType = workoutType
+        ? user.data.workouts.includes(workoutType)
+        : true;
 
-  //     return matchesName && matchesWorkoutType;
-  //   });
-  // }
+      return matchesName && matchesWorkoutType;
+    });
+  }
 }
