@@ -47,8 +47,4 @@ export class DataService {
       return users;
     }
   }
-
-  updateUsers(users: TreeNode[]): void {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(users));
-  }
 }

@@ -1,3 +1,14 @@
 <div class="card min-h-96 w-full p-4">
-  <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
+  <!-- User Toggle with SelectButton -->
+  <p-selectButton
+    [options]="usersList"
+    optionLabel="name"
+    optionValue="id"
+    [(ngModel)]="selectedUser"
+    (onChange)="onUserChange($event)"
+    class="mb-4 w-full"
+  ></p-selectButton>
+
+  <!-- Chart -->
+  <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
 </div>

@@ -20,6 +20,14 @@ This is a simple health fitness tracker that allows users to track their daily w
 
 ## Installation
 
+### Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- You have installed the latest version of [Node.js](https://www.nodejs.org) and npm.
+- You have installed the [Angular CLI](https://angular.dev/tools/cli/setup-local#install-the-angular-cli).
+- You have installed the latest version of [Git](https://git-scm.com/).
+
 To install the necessary dependencies, run the following command:
 
 1. Clone the repository
@@ -44,6 +52,8 @@ ng serve --open
 
 This application uses Angular 19 and uses PrimeNG and Angular Material for the UI components.
 
+### Components
+
 The application has the following components:
 
 1. `app.component` - This is the main component that contains the header navigation bar and the router outlet.
@@ -59,3 +69,28 @@ The application has the following components:
 6. `charts.component` - This component displays the user's workout progress in a bar graph format.
 
 7. `page-not-found.component` - This component gets rendered when it navigates to the undefined route.
+
+### Tests
+
+The application has the following tests:
+
+#### Test Components
+
+- `search-workout-filter.component.spec` - This test checks the following functionalities:
+
+  - should clear the search field when clearSearch is called
+  - should call clearSearch when clear button is clicked
+  - should show clear button when search input is not empty
+  - should initialize the form with default values
+  - should emit filtersChanged when form values change
+  - should create
+  - should hide clear button when search input is empty
+
+#### Test Services
+
+- `data.service.spec` - This test checks the following functionalities:
+
+  - should return users from USERS if localStorage is empty
+  - should store users in localStorage after first fetch
+  - should be created
+  - should retrieve users from localStorage if data exists

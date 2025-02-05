@@ -9,7 +9,7 @@ describe('DataService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(DataService);
-    localStorage.clear(); // Clear localStorage before each test
+    localStorage.clear();
   });
 
   it('should be created', () => {
@@ -38,9 +38,9 @@ describe('DataService', () => {
         data: {
           id: '1',
           name: 'Johnny Depp',
-          workouts: 'Running',
-          totalWorkouts: 1,
-          totalWorkoutDuration: 30,
+          workouts: ['Kayaking', 'Running'],
+          totalWorkouts: 2,
+          totalWorkoutDuration: 60,
         },
         children: [],
       },
@@ -48,25 +48,6 @@ describe('DataService', () => {
     localStorage.setItem('usersData', JSON.stringify(mockUsers));
     const users = service.getUsers();
     expect(users.length).toBe(1);
-    expect(users[0].data.name).toBe('John Doe');
-  });
-
-  it('should update users in localStorage', () => {
-    const mockUsers: TreeNode[] = [
-      {
-        data: {
-          id: '1',
-          name: 'Jane Doe',
-          workouts: 'Cycling',
-          totalWorkouts: 2,
-          totalWorkoutDuration: 60,
-        },
-        children: [],
-      },
-    ];
-    service.updateUsers(mockUsers);
-    const storedUsers = JSON.parse(localStorage.getItem('usersData')!);
-    expect(storedUsers.length).toBe(1);
-    expect(storedUsers[0].data.name).toBe('Johnny Depp');
+    expect(users[0].data.name).toBe('Johnny Depp');
   });
 });
