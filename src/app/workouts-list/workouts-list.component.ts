@@ -38,13 +38,12 @@ export class WorkoutsListComponent implements OnInit {
   users: TreeNode[] = [];
   filteredUsers: TreeNode[] = [];
 
-  constructor(private dataService: DataService) {} // Inject UserService
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.loadUsers();
   }
 
-  // Load users via the service
   loadUsers() {
     this.users = this.dataService.getUsers();
     this.filteredUsers = [...this.users];
