@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
-import { DataService } from '../../data.service';
-import { ALLWORKOUTTYPES } from '../../../data';
+import { DataService } from '../data.service';
+import { ALLWORKOUTTYPES } from '../../data';
 @Component({
   selector: 'app-charts',
   imports: [ChartModule],

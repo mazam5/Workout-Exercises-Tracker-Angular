@@ -14,7 +14,7 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
-import { ALLWORKOUTTYPES } from '../../../data';
+import { ALLWORKOUTTYPES } from '../../data';
 @Component({
   selector: 'app-add-new-workout',
   imports: [
