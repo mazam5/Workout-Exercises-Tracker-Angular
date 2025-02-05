@@ -3,18 +3,22 @@ import { ChartModule } from 'primeng/chart';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DataService } from '../data.service';
 import { ALLWORKOUTTYPES } from '../../data';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-charts',
   standalone: true,
-  imports: [ChartModule, SelectButtonModule],
+  imports: [ChartModule, SelectButtonModule, ReactiveFormsModule],
   templateUrl: './charts.component.html',
 })
 export class ChartsComponent implements OnInit {
   basicData: any;
   basicOptions: any;
   usersList: any[] = [];
-  selectedUser: string = 'All';
+  // selectedUser: string = 'All';
+  userChartForm = new FormGroup({
+    selectedUser: new FormControl('All'),
+  });
 
   constructor(private dataService: DataService) {}
 
@@ -95,8 +99,8 @@ export class ChartsComponent implements OnInit {
   }
 
   onUserChange(event: any) {
-    this.selectedUser = event.value;
+    this.userChartForm.value.selectedUser = event.value;
     const usersData = this.dataService.getUsers();
-    this.prepareChartData(usersData, this.selectedUser);
+    this.prepareChartData(usersData, this.userChartForm.value.selectedUser!);
   }
 }

@@ -1,13 +1,16 @@
 <div class="card min-h-96 w-full p-4">
-  <!-- User Toggle with SelectButton -->
-  <p-selectButton
-    [options]="usersList"
-    optionLabel="name"
-    optionValue="id"
-    [(ngModel)]="selectedUser"
-    (onChange)="onUserChange($event)"
-    class="mb-4 w-full"
-  ></p-selectButton>
+  <form [formGroup]="userChartForm">
+    <!-- User Toggle with SelectButton -->
+    <!-- [(ngModel)]="selectedUser" -->
+    <p-selectButton
+      [options]="usersList"
+      optionLabel="name"
+      optionValue="id"
+      formControlName="selectedUser"
+      (onChange)="onUserChange($event)"
+      class="mb-4 w-full"
+    ></p-selectButton>
+  </form>
 
   <!-- Chart -->
   <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
